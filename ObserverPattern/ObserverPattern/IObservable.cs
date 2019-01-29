@@ -6,8 +6,8 @@ namespace ObserverPattern
 {
     public interface IObservable<T>
     {
-        void RegisterObserver();
-        void RemoveObserver();
+        void RegisterObserver(IObserver<WeatherData> observer);
+        void RemoveObserver(IObserver<WeatherData> observer);
         void NotifyObserver();
     }
 }

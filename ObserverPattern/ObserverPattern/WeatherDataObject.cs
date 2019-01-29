@@ -6,11 +6,11 @@ namespace ObserverPattern
 {
     public class WeatherDataObject : IObservable<WeatherData>
     {
-        List<IObserver<WeatherData>> observerMonitors;
+        List<IObserver<WeatherData>> observers;
 
         public WeatherDataObject()
         {
-            observerMonitors = new List<IObserver<WeatherData>>();
+            observers = new List<IObserver<WeatherData>>();
         }
 
         public void NotifyObserver()
@@ -18,9 +18,9 @@ namespace ObserverPattern
             throw new NotImplementedException();
         }
 
-        public void RegisterObserver()
+        public void RegisterObserver(IObserver<WeatherData> o)
         {
-            throw new NotImplementedException();
+            observers.Add(o);
         }
 
         public void RemoveObserver()
