@@ -22,8 +22,8 @@ namespace ObserverPattern
         {
             observers.Add(o);
         }
-
-        public void RemoveObserver()
+        
+        public void RemoveObserver(IObserver<WeatherData> observer)
         {
             throw new NotImplementedException();
         }
