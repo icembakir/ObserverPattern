@@ -8,21 +8,26 @@ namespace ObserverPattern.Observers
     {
         private float temperture;
         private float humidity;
-        private IObservable<WeatherData> weatherData;
+        private float pressure;
+        private IObservable<WeatherData> observable;
 
-        public ForecastConditions(IObservable<WeatherData> weatherData)
+        public ForecastConditions(IObservable<WeatherData> observable)
         {
-            this.weatherData = weatherData;
-            weatherData.RegisterObserver(this);
-        }
-        public string Display()
-        {
-            throw new NotImplementedException();
+            this.observable = observable;
+            observable.RegisterObserver(this);
         }
 
-        public void Update()
+        public void Display()
         {
-            throw new NotImplementedException();
+            Console.WriteLine(temperture + humidity + pressure);
+        }
+
+        public void Update(float temp, float humidity, float pressure)
+        {
+            temperture = temp;
+            this.humidity = humidity;
+            this.pressure = pressure;
+            Display();
         }
     }
 }

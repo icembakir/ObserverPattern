@@ -6,19 +6,17 @@ namespace ObserverPattern
 {
     public class WeatherData
     {
-        public WeatherData(double temperture, float humidity, float pressure)
+        private float humidity;
+        private float pressure;
+        private float temperture;
+
+        public WeatherData(float temperture, float humidity, float pressure)
         {
-            this.Temperture = temperture;
-            this.Humidity = humidity;
-            this.Pressure = pressure;
+            this.temperture = temperture;
+            this.humidity = humidity;
+            this.pressure = pressure;
         }
 
-        public double Temperture { get; }
-
-        public float Humidity { get; }
-
-        public float Pressure { get; }
-
-
+        
     }
 }

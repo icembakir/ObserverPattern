@@ -6,26 +6,46 @@ namespace ObserverPattern
 {
     public class WeatherDataObject : IObservable<WeatherData>
     {
-        List<IObserver<WeatherData>> observers;
+        List<IObserver<WeatherData>> observerMonitors;
+
+        private float temperture;
+        private float humidity;
+        private float pressure;
+
 
         public WeatherDataObject()
         {
-            observers = new List<IObserver<WeatherData>>();
+            observerMonitors = new List<IObserver<WeatherData>>();
         }
 
         public void NotifyObserver()
         {
-            throw new NotImplementedException();
+            foreach (var observer in observerMonitors)
+            {
+                observer.Update(temperture, humidity, pressure);
+            }
         }
 
-        public void RegisterObserver(IObserver<WeatherData> o)
+        public void SetMeasurements(float temperture, float humidity, float pressure)
         {
-            observers.Add(o);
+            this.temperture = temperture;
+            this.humidity = humidity;
+            this.pressure = pressure;
         }
-        
+
+        public void MeasurementsChanged()
+        {
+            NotifyObserver();
+        }
+
+        public void RegisterObserver(IObserver<WeatherData> observer)
+        {
+            observerMonitors.Add(observer);
+        }
+
         public void RemoveObserver(IObserver<WeatherData> observer)
         {
-            throw new NotImplementedException();
+            observerMonitors.Remove(observer);
         }
     }
 }
